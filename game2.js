@@ -195,7 +195,7 @@ if (typeof module !== 'undefined') module.exports = { parseLevel, simulate, DX, 
       area:{t:A.t,r:A.r,b:A.b,l:A.l},ox:GARIS.ox,oy:GARIS.oy};
     if(atur)for(var k in atur)o[k]=atur[k];
     return o}
-  var BG={folder:FOLDER,garis:true,   // garis:true = tampilkan garis petak (untuk cek pas / tidaknya)
+  var BG={folder:FOLDER,garis:false,   // garis:true = tampilkan garis petak (untuk cek pas / tidaknya)
     1:petaBG('map1taman.png'),
     2:petaBG('map2taman.jpeg'),
     3:petaBG('map3taman.png'),
