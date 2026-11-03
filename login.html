@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Log in - Coding Game</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="logo" href="index.html" aria-label="KoDi - Beranda">
+      <img class="logo-robot" src="image/logo2.png" alt="">
+      <img class="logo-text" src="image/logo1.png" alt="KoDi">
+    </a>
+    <div class="menu">
+      <a href="index.html">About</a>
+      <a href="#">Learning</a>
+      <a href="#">Pages</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="auth">
+      <a class="btn-f" href="signup.html">Sign up</a>
+    </div>
+  </nav>
+
+  <section class="login">
+    <h2>Sudah punya akun?</h2>
+    <p class="login-sub">Masuk untuk melanjutkan game coding Anda.</p>
+
+    <div class="login-card">
+
+      <!-- KIRI: masuk pakai email/username + kata sandi -->
+      <form class="login-col" id="form-akun" novalidate>
+        <div class="field">
+          <label for="user">Email atau Username</label>
+          <div class="pw-wrap">
+            <input type="text" id="user" autocomplete="username" autocapitalize="none">
+            <span class="field-ico" aria-hidden="true"><img src="icon/user.png" alt="" onerror="this.remove()"></span>
+          </div>
+        </div>
+        <div class="field">
+          <label for="pw">Kata sandi</label>
+          <div class="pw-wrap">
+            <input type="password" id="pw" autocomplete="current-password">
+            <button type="button" class="pw-toggle" data-target="pw" aria-label="Lihat kata sandi" aria-pressed="false"><img src="icon/eye.png" alt="" onerror="this.remove()"></button>
+          </div>
+        </div>
+        <a class="forgot" id="forgot" href="#">Lupa kata sandi?</a>
+        <button type="submit" class="btn-f full">Masuk</button>
+        <p class="msg" id="msg-akun" role="alert" aria-live="polite"></p>
+      </form>
+
+      <!-- KANAN: masuk pakai kode 6 digit + media sosial -->
+      <div class="login-col">
+        <form id="form-kode" novalidate>
+          <h3>Masuk sebagai orang tua</h3>
+          <p class="hint">Masukkan kode anak (6 huruf) dari guru.</p>
+          <div class="code-row">
+            <div class="pin" id="pin">
+              <input type="text" id="kode" maxlength="6" pattern="[A-Za-z0-9]{6}" autocapitalize="characters" autocomplete="one-time-code" aria-label="Kode anak 6 huruf">
+              <div class="pin-slots" aria-hidden="true">
+                <span class="slot">-</span><span class="slot">-</span><span class="slot">-</span><span class="slot">-</span><span class="slot">-</span><span class="slot">-</span>
+              </div>
+            </div>
+            <button type="submit" class="btn-f">Masuk</button>
+          </div>
+          <p class="msg" id="msg-kode" role="alert" aria-live="polite"></p>
+        </form>
+
+        <div class="or">atau</div>
+
+        <button type="button" class="btn-social" data-sosial="Google">
+          <span class="soc-ico"><img src="icon/google.png" alt="" onerror="this.remove()"></span>Lanjutkan dengan Google
+        </button>
+        <button type="button" class="btn-social" data-sosial="Facebook">
+          <span class="soc-ico f" data-fb="f"><img src="icon/facebook.png" alt="" onerror="this.remove()"></span>Lanjutkan dengan Facebook
+        </button>
+      </div>
+
+    </div>
+  </section>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="supabase-config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

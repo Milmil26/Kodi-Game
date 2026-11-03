@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Game 1 - Coding Game</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="game1.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="supabase-config.js"></script>
+<script src="guard.js" data-role="student,teacher"></script>
+<script src="progres-api.js"></script>
+</head>
+<body>
+
+<!-- karakter cadangan (dipakai kalau gambar karakter belum ada) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="bean" viewBox="0 0 40 48">
+    <rect x="6" y="4" width="28" height="36" rx="14" fill="#e5484d"/>
+    <rect x="16" y="12" width="20" height="12" rx="6" fill="#bfe9ff"/>
+    <rect x="2" y="20" width="8" height="16" rx="4" fill="#c93a40"/>
+    <rect x="10" y="38" width="8" height="8" rx="3" fill="#c93a40"/><rect x="22" y="38" width="8" height="8" rx="3" fill="#c93a40"/>
+  </symbol>
+</defs></svg>
+
+<div class="wrap g-wrap">
+
+  <!-- BAR ATAS: logo, judul level + kemajuan, profil, menu -->
+  <header class="g-top">
+    <a class="logo" href="index.html" aria-label="KoDi - Beranda">
+      <img class="logo-robot" src="image/logo2.png" alt="">
+      <img class="logo-text" src="image/logo1.png" alt="KoDi">
+    </a>
+    <div class="g-head">
+      <b id="g-title">Level 1 : Drag &amp; Drop</b>
+      <div class="g-prog" id="g-prog" aria-label="Kemajuan level"></div>
+    </div>
+    <div class="g-tools">
+      <!-- PROFIL USER: huruf depan nama diisi otomatis dari game1.js, bisa diklik -->
+      <div class="g-dd">
+        <button class="g-circle g-avatar" id="g-prof-btn" type="button" aria-label="Profil" aria-haspopup="true" aria-expanded="false"></button>
+        <div class="g-menu" id="g-prof" hidden>
+          <div class="g-who"><b id="g-name"></b><small id="g-role">Murid</small></div>
+          <a href="murid.html#profil" id="g-prof-link">Profil saya</a>
+          <a href="#" data-logout>Keluar</a>
+        </div>
+      </div>
+      <div class="g-dd">
+        <button class="g-circle" id="g-menu-btn" type="button" aria-label="Menu" aria-haspopup="true" aria-expanded="false">&#9776;</button>
+        <div class="g-menu" id="g-menu" hidden>
+          <a href="murid.html" id="g-home">Beranda</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- TAMPILAN GAME + tombol Jalankan -->
+  <section class="g-stage-row">
+    <div class="g-stage">
+      <div class="g-board" id="g-board"></div>
+      <div class="g-result" id="g-result" hidden>
+        <b id="g-res-t"></b>
+        <span class="g-stars" id="g-stars">&#9733; &#9733; &#9733;</span>
+        <p id="g-res-p"></p>
+        <div class="g-row">
+          <button class="btn-o" id="g-again" type="button">Coba lagi</button>
+          <button class="btn-f" id="g-next" type="button">Level berikutnya</button>
+        </div>
+      </div>
+    </div>
+    <button class="g-run" id="g-run" type="button">&#9654; Jalankan</button>
+  </section>
+
+  <!-- INSTRUKSI -->
+  <div class="g-ins">
+    <b>Instruksi:</b>
+    <span class="g-bubble" id="g-ins"></span>
+  </div>
+
+  <!-- BLOK | AREA KERJA | KODE -->
+  <section class="g-work">
+    <div class="g-pane">
+      <div class="g-hd">Blok</div>
+      <div class="g-body g-pal" id="g-pal">
+        <div class="blk maju" data-cmd="maju" draggable="true" tabindex="0"><span>Gerak maju</span></div>
+        <div class="blk belok" data-cmd="kiri" draggable="true" tabindex="0"><span>belok</span><span class="fld"><select aria-label="Arah belok"><option value="kiri" selected>kiri &#8634;</option><option value="kanan">kanan &#8635;</option></select></span></div>
+        <div class="blk belok" data-cmd="kanan" draggable="true" tabindex="0"><span>belok</span><span class="fld"><select aria-label="Arah belok"><option value="kiri">kiri &#8634;</option><option value="kanan" selected>kanan &#8635;</option></select></span></div>
+        <div class="blk ulang" id="g-pal-loop" data-cmd="ulangi" data-n="3" draggable="true" tabindex="0" hidden><div class="u-head"><span>Ulangi</span><span class="fld"><select aria-label="Jumlah ulangan"><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option></select></span><span>kali</span></div><div class="g-inner"></div><div class="u-foot"></div></div>
+      </div>
+    </div>
+
+    <div class="g-pane">
+      <div class="g-hd">Area kerja</div>
+      <div class="g-body" id="g-ws">
+        <div class="blk hat">Ketika dijalankan</div>
+        <div class="g-list" id="g-list"></div>
+      </div>
+    </div>
+
+    <div class="g-pane">
+      <div class="g-hd">Kode <button type="button" id="g-restart">&#8634; Mulai ulang</button></div>
+      <pre class="g-code"><code id="g-code"></code></pre>
+    </div>
+  </section>
+
+</div>
+<script src="data.js"></script>
+<script src="game1.js"></script>
+</body>
+</html>

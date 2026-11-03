@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Atur Ulang Kata Sandi - Coding Game</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="logo" href="index.html" aria-label="KoDi - Beranda">
+      <img class="logo-robot" src="image/logo2.png" alt="">
+      <img class="logo-text" src="image/logo1.png" alt="KoDi">
+    </a>
+  </nav>
+
+  <section class="login">
+    <h2>Atur ulang kata sandi</h2>
+    <p class="login-sub">Buat kata sandi baru untuk akunmu.</p>
+
+    <div class="login-card narrow">
+      <div class="login-col" id="tunggu">
+        <p class="msg" id="status" role="status" aria-live="polite">Memeriksa tautan...</p>
+        <a class="btn-f full" id="kembali" href="login.html" hidden style="display:block;text-align:center;text-decoration:none">Kembali ke Log in</a>
+      </div>
+
+      <form class="login-col" id="form" novalidate hidden>
+        <div class="field">
+          <label for="pw">Kata sandi baru</label>
+          <div class="pw-wrap">
+            <input type="password" id="pw" autocomplete="new-password">
+            <button type="button" class="pw-toggle" data-target="pw" aria-label="Lihat kata sandi" aria-pressed="false"><img src="icon/eye.png" alt="" onerror="this.remove()"></button>
+          </div>
+        </div>
+        <div class="field">
+          <label for="pw2">Ulangi kata sandi baru</label>
+          <div class="pw-wrap">
+            <input type="password" id="pw2" autocomplete="new-password">
+            <button type="button" class="pw-toggle" data-target="pw2" aria-label="Lihat kata sandi" aria-pressed="false"><img src="icon/eye.png" alt="" onerror="this.remove()"></button>
+          </div>
+        </div>
+        <button type="submit" class="btn-f full" id="simpan">Simpan kata sandi</button>
+        <p class="msg" id="msg" role="alert" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="supabase-config.js"></script>
+<script src="app.js"></script>
+<script src="reset.js"></script>
+
+</body>
+</html>

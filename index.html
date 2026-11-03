@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Coding Game</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="logo" href="index.html" aria-label="KoDi - Beranda">
+      <img class="logo-robot" src="image/logo2.png" alt="">
+      <img class="logo-text" src="image/logo1.png" alt="KoDi">
+    </a>
+    <div class="menu">
+      <a href="#about" class="on">About</a>
+      <a href="#">Learning</a>
+      <a href="#">Pages</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="auth">
+      <a class="btn-o" href="login.html">Log in</a>
+      <a class="btn-f" href="signup.html">Sign up</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div>
+      <span class="tag">Untuk siswa SD</span>
+      <h1>CODING <span>GAME</span></h1>
+      <p class="sub">Bermain sambil belajar coding dalam meningkatkan kemampuan komputasional.</p>
+      <a class="cta" href="login.html">Eksplor More <img class="ico-arrow" src="icon/arrow.png" alt=""></a>
+    </div>
+    <div>
+      <div class="stage">
+        <button class="next" id="next" type="button" aria-label="Game berikutnya">➜</button>
+        <div class="view"><div class="track" id="track" data-href="login.html"></div></div>
+      </div>
+      <div class="dots" id="dots"></div>
+    </div>
+  </section>
+  <!-- Bagian Contact disisipkan otomatis oleh app.js -->
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="supabase-config.js"></script>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

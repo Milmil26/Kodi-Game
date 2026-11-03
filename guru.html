@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Beranda Guru - Coding Game</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="supabase-config.js"></script>
+<script src="guard.js" data-role="teacher"></script>
+</head>
+<body data-page="home" data-role="teacher">
+<div class="wrap">
+  <nav>
+    <a class="logo" href="index.html" aria-label="KoDi - Beranda">
+      <img class="logo-robot" src="image/logo2.png" alt="">
+      <img class="logo-text" src="image/logo1.png" alt="KoDi">
+    </a>
+    <div class="menu" data-menu></div>
+    <div class="nav-r">
+      <button class="avatar" type="button" aria-label="Profil" aria-expanded="false"></button>
+      <div class="dd" hidden></div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div>
+      <span class="tag">Guru</span>
+      <h1><small>Welcome,</small><span data-name>Guru</span></h1>
+      <p class="sub">Buat kelas, bagikan kode ke murid, atur game dan level, lalu pantau kemajuan mereka dari satu tempat.</p>
+      <a class="cta" href="eksplor.html">Eksplor More <img class="ico-arrow" src="icon/arrow.png" alt=""></a>
+    </div>
+    <div class="stack">
+      <div class="panel">
+        <div class="row-h">
+          <div><h3>Class Section</h3><span class="muted"><span id="cnt">0</span> kelas dibuat</span></div>
+          <button class="btn-f" id="new-class" type="button">+ New class</button>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="row-h">
+          <div><h3>Progress Student</h3><span class="muted">Ringkasan tiap kelas</span></div>
+          <button class="btn-o" id="show" type="button">Tampilkan</button>
+        </div>
+        <div class="detail" id="prog" hidden></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Muncul hanya kalau guru sudah punya kelas -->
+  <section id="classes-wrap" hidden>
+    <div class="sec-h"><h2>Kelas Saya</h2></div>
+    <div id="classes"></div>
+  </section>
+</div>
+<script src="data.js"></script>
+<script src="kelas-api.js"></script>
+<script src="app.js"></script>
+<script src="after.js"></script>
+</body>
+</html>

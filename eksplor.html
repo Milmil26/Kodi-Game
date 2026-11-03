@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Eksplor Game - KoDi</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="supabase-config.js"></script>
+<script src="guard.js" data-role="student,teacher,parents"></script>
+</head>
+<body data-page="eksplor">
+<div class="wrap">
+  <nav>
+    <a class="logo" href="index.html" aria-label="KoDi - Beranda">
+      <img class="logo-robot" src="image/logo2.png" alt="">
+      <img class="logo-text" src="image/logo1.png" alt="KoDi">
+    </a>
+    <div class="menu" data-menu></div>
+    <div class="nav-r">
+      <button class="avatar" type="button" aria-label="Profil" aria-expanded="false"></button>
+      <div class="dd" hidden></div>
+    </div>
+  </nav>
+
+  <section class="hero solo">
+    <div>
+      <span class="tag" id="tag">Eksplor</span>
+      <h1><small>Kenali Game</small>Eksplor More</h1>
+      <p class="sub">Lihat game apa saja yang ada, isi level-levelnya, dan bagaimana tiap game melatih kemampuan berpikir komputasional anak.</p>
+    </div>
+  </section>
+
+  <p class="mode-note">👀 <b>Mode lihat saja.</b> Orang tua bisa melihat isi game dan manfaatnya. Game hanya dimainkan oleh murid dan guru.</p>
+  <section id="games"></section>
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script>
+/* Daftar game, level, dan penjelasannya diambil dari data.js (edit di sana, bukan di sini). */
+var BISA_MAIN = ['student', 'teacher'];   // role yang boleh melihat tombol Main
+
+App.siap(function (u) {
+  document.body.classList.add(BISA_MAIN.indexOf(u.role) > -1 ? 'bisa' : 'lihat');
+  document.getElementById('tag').textContent = { student: 'Murid', teacher: 'Guru', parents: 'Orang Tua' }[u.role];
+
+  document.getElementById('games').innerHTML = GAMES.map(function (g, k) {
+    var ada = g.levels.length > 0;
+    var isi = !ada
+      ? '<p class="belum">🚧 Game ' + g.id + ' segera hadir. Daftar level akan muncul setelah game siap.</p>'
+      : '<h4>Bagaimana game ini melatih berpikir komputasional?</h4><div class="ct">' + g.ct + '</div>' +
+        g.chips.map(function (c) { return '<span class="chip">' + c + '</span>'; }).join('') +
+        '<h4>Daftar level</h4><ol class="lv-list">' + g.levels.map(function (l, i) {
+          return '<li><b>Level ' + (i + 1) + '</b><span>' + l.t + '<small>' + l.ins + '</small></span>' +
+                 '<a class="btn-main" href="' + g.page + '?level=' + (i + 1) + '">Main</a></li>';
+        }).join('') + '</ol>';
+    return '<details' + (k === 0 ? ' open' : '') + '><summary><img src="' + g.img + '" alt="">' +
+      '<div><h3>Game ' + g.id + ' : ' + g.judul + '</h3>' +
+      (ada ? '<span class="muted">' + g.levels.length + ' level</span>' : '<span class="soon">Segera hadir</span>') + '</div></summary>' +
+      '<div class="isi">' + isi + '</div></details>';
+  }).join('');
+});
+</script>
+</body>
+</html>

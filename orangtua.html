@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Beranda Orang Tua - Coding Game</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="supabase-config.js"></script>
+<script src="guard.js" data-role="parents"></script>
+</head>
+<body data-page="home" data-role="parents">
+<div class="wrap">
+  <nav>
+    <a class="logo" href="index.html" aria-label="KoDi - Beranda">
+      <img class="logo-robot" src="image/logo2.png" alt="">
+      <img class="logo-text" src="image/logo1.png" alt="KoDi">
+    </a>
+    <div class="menu" data-menu></div>
+    <div class="nav-r">
+      <button class="avatar" type="button" aria-label="Profil" aria-expanded="false"></button>
+      <div class="dd" hidden></div>
+    </div>
+  </nav>
+
+  <section class="hero solo">
+    <div>
+      <span class="tag">Orang Tua</span>
+      <h1><small>Welcome,</small><span id="p-title">Orang Tua</span></h1>
+      <p class="sub">Pantau hasil belajar dan lama bermain anak Anda di Coding Game. Semua kemajuannya tampil di sini.</p>
+      <a class="cta" href="eksplor.html">Eksplor More <img class="ico-arrow" src="icon/arrow.png" alt=""></a>
+    </div>
+  </section>
+
+  <section id="anak">
+    <div class="row-h sec-h">
+      <h2>Anak Saya</h2>
+      <button class="btn-o" id="add-kid" type="button">+ Tambah kode anak</button>
+    </div>
+    <form class="panel inline" id="kid-form" hidden novalidate>
+      <input id="kid-name" placeholder="Nama anak">
+      <input id="kid-code" maxlength="6" autocapitalize="characters" placeholder="Kode anak (WIQKXM)">
+      <button class="btn-f" type="submit">Tambah</button>
+    </form>
+    <p class="msg" id="kid-msg" role="alert"></p>
+    <div id="kids"></div>
+  </section>
+</div>
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script src="after.js"></script>
+</body>
+</html>

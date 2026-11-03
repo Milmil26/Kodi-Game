@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Coding Game</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="signup.css">
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="logo" href="index.html" aria-label="KoDi - Beranda">
+      <img class="logo-robot" src="image/logo2.png" alt="">
+      <img class="logo-text" src="image/logo1.png" alt="KoDi">
+    </a>
+    <div class="menu">
+      <a href="index.html">About</a>
+      <a href="#">Learning</a>
+      <a href="#">Pages</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="auth">
+      <a class="btn-o" href="login.html">Log in</a>
+    </div>
+  </nav>
+
+  <section class="signup">
+
+    <!-- Judul + paragraf (ganti teksnya sesuka lu) -->
+    <div class="intro">
+      <h2>Belum punya akun?</h2>
+      <p>Pilih daftar sebagai siapa untuk mulai game coding Anda.</p>
+    </div>
+
+    <div class="role-cards">
+
+      <!-- Ikon ceklis dibuat lewat CSS (.role-card .ico) dengan icon/check.png sebagai mask: warnanya ikut tema. Ganti file ikonnya di signup.css. -->
+
+      <div class="role-card" role="button" tabindex="0" data-role="student" data-label="Murid">
+        <img class="role-pic" src="image/student.jpeg" alt="murid">
+        <h3>Student</h3>
+        <p class="point">
+          <span class="ico"></span>
+          <span>Simpan kemajuan game Anda</span>
+        </p>
+        <p class="point">
+          <span class="ico"></span>
+          <span>Bergabung menjadi bagian dari kelas guru Anda</span>
+        </p>
+      </div>
+
+      <div class="role-card" role="button" tabindex="0" data-role="teacher" data-label="Guru">
+        <img class="role-pic" src="image/teacher.jpeg" alt="guru">
+        <h3>Teacher</h3>
+        <p class="point">
+          <span class="ico"></span>
+          <span>Buat bagian kelas untuk murid</span>
+        </p>
+        <p class="point">
+          <span class="ico"></span>
+          <span>Lacak kemajuan murid dan berikan umpan balik</span>
+        </p>
+        <p class="point">
+          <span class="ico"></span>
+          <span>Akses soal dan kunci jawaban</span>
+        </p>
+      </div>
+
+      <div class="role-card" role="button" tabindex="0" data-role="parents" data-label="Orang Tua">
+        <img class="role-pic" src="image/parents.jpeg" alt="orangtua">
+        <h3>Parents</h3>
+        <p class="point">
+          <span class="ico"></span>
+          <span>Memantau hasil akhir belajar anak</span>
+        </p>
+        <p class="point">
+          <span class="ico"></span>
+          <span>Melihat berapa lama anak bermain</span>
+        </p>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<!-- ================= MODAL SIGN UP ================= -->
+<div class="overlay" id="overlay" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="close" id="closeBtn" type="button" aria-label="Tutup">&times;</button>
+
+    <div id="formView">
+      <h2 id="modalTitle">Buat akun</h2>
+      <p class="sub">Isi data di bawah untuk mendaftar.</p>
+
+      <form id="signupForm" novalidate>
+
+        <!-- Email: murid + guru -->
+        <div class="grp" data-roles="student teacher">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email">
+        </div>
+
+        <!-- Nama lengkap: murid -->
+        <div class="grp" data-roles="student">
+          <label for="fullname">Nama lengkap</label>
+          <input id="fullname" name="fullname" type="text" autocomplete="name">
+        </div>
+
+        <!-- Nama depan + belakang: guru -->
+        <div class="grp row" data-roles="teacher">
+          <div>
+            <label for="firstname">Nama depan</label>
+            <input id="firstname" name="firstname" type="text" autocomplete="given-name">
+          </div>
+          <div>
+            <label for="lastname">Nama belakang</label>
+            <input id="lastname" name="lastname" type="text" autocomplete="family-name">
+          </div>
+        </div>
+
+        <!-- Tanggal lahir: murid + guru -->
+        <div class="grp" data-roles="student teacher">
+          <label for="birth">Tanggal lahir</label>
+          <input id="birth" name="birth" type="date" autocomplete="bday">
+        </div>
+
+        <!-- Username: guru -->
+        <div class="grp" data-roles="teacher">
+          <label for="username">Username</label>
+          <input id="username" name="username" type="text" autocomplete="username" autocapitalize="none">
+        </div>
+
+        <!-- Orang tua: nama/username, nama anak, kode 6 digit -->
+        <div class="grp" data-roles="parents">
+          <label for="parentname">Nama / username</label>
+          <input id="parentname" name="parentname" type="text" autocomplete="username" autocapitalize="none">
+        </div>
+        <div class="grp" data-roles="parents">
+          <label for="childname">Nama anak</label>
+          <input id="childname" name="childname" type="text">
+        </div>
+        <div class="grp" data-roles="parents">
+          <label for="code">Kode anak</label>
+          <input id="code" name="code" class="code" type="text" maxlength="6" pattern="[A-Za-z]{6}" autocapitalize="characters" autocomplete="one-time-code" placeholder="WIQKXM">
+          <p class="note">Kode ada pada guru. Format: 6 huruf (contoh: WIQKXM)</p>
+        </div>
+
+        <!-- Password: murid + guru -->
+        <div class="grp" data-roles="student teacher">
+          <label for="password">Kata sandi</label>
+          <div class="pw-wrap">
+            <input id="password" name="password" type="password" autocomplete="new-password">
+            <button type="button" class="pw-toggle" data-target="password" aria-label="Lihat kata sandi" aria-pressed="false"><img src="icon/eye.png" alt="" onerror="this.remove()"></button>
+          </div>
+          <label for="password2">Ulangi kata sandi</label>
+          <div class="pw-wrap">
+            <input id="password2" name="password2" type="password" autocomplete="new-password">
+            <button type="button" class="pw-toggle" data-target="password2" aria-label="Lihat kata sandi" aria-pressed="false"><img src="icon/eye.png" alt="" onerror="this.remove()"></button>
+          </div>
+        </div>
+
+        <p class="error" id="error" role="alert"></p>
+
+        <button class="btn-p" type="submit">Daftar</button>
+
+        <!-- Media sosial: hanya guru (orang tua tanpa akun; murid SD biasanya belum punya akun Google/Facebook) -->
+        <div class="grp social" data-roles="teacher">
+          <p class="or">atau daftar dengan akun media sosial</p>
+          <div class="social-btns">
+            <button type="button" class="soc" data-provider="Google" aria-label="Daftar dengan Google">
+              <img src="icon/google1.png" alt="" onerror="this.remove()">
+            </button>
+            <button type="button" class="soc" data-provider="Facebook" aria-label="Daftar dengan Facebook">
+              <img src="icon/facebook.png" alt="" onerror="this.remove()">
+            </button>
+          </div>
+        </div>
+
+        <p class="alt">Sudah punya akun? <a href="login.html">Log in</a></p>
+      </form>
+    </div>
+
+    <div id="doneView" class="done">
+      <h2>Pendaftaran berhasil</h2>
+      <p id="doneText"></p>
+      <button class="btn-p" type="button" id="doneBtn">Selesai</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="supabase-config.js"></script>
+<script src="app.js"></script>
+<script src="signup.js"></script>
+</body>
+</html>

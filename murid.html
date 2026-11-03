@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Beranda Murid - Coding Game</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="supabase-config.js"></script>
+<script src="guard.js" data-role="student"></script>
+</head>
+<body data-page="home" data-role="student">
+<div class="wrap">
+  <nav>
+    <a class="logo" href="index.html" aria-label="KoDi - Beranda">
+      <img class="logo-robot" src="image/logo2.png" alt="">
+      <img class="logo-text" src="image/logo1.png" alt="KoDi">
+    </a>
+    <div class="menu" data-menu></div>
+    <div class="nav-r">
+      <button class="avatar" type="button" aria-label="Profil" aria-expanded="false"></button>
+      <div class="dd" hidden></div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div>
+      <span class="tag">Murid</span>
+      <h1><small>Welcome,</small><span data-name>Murid</span></h1>
+      <p class="sub">Siap lanjut petualangan? Susun blok, selesaikan level, dan kumpulkan kemampuan berpikir komputasionalmu sambil bermain.</p>
+      <a class="cta" href="eksplor.html">Eksplor More <img class="ico-arrow" src="icon/arrow.png" alt=""></a>
+    </div>
+    <div>
+      <div class="stage">
+        <button class="next" id="next" type="button" aria-label="Game berikutnya">➜</button>
+        <div class="view"><div class="track" id="track"></div></div>
+      </div>
+      <div class="dots" id="dots"></div>
+    </div>
+  </section>
+
+  <!-- TERAKHIR DIMAINKAN: tersembunyi sampai murid pernah main -->
+  <section class="sec" id="last-sec" hidden>
+    <div class="sec-card">
+      <span class="badge">Terakhir dimainkan</span>
+      <div class="last-body">
+        <img id="last-img" src="image/game1.png" alt="Game terakhir dimainkan">
+        <div class="last-info">
+          <h3 id="last-title"></h3>
+          <p class="muted" id="last-level"></p>
+          <div class="bar"><i id="last-bar" style="width:0%"></i></div>
+          <a class="btn-f" id="last-go" href="game1.html">Lanjutkan ▶</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KELAS: muncul hanya kalau murid sudah gabung kelas. Hanya bisa dilihat -->
+  <section class="sec" id="kelas-sec" hidden>
+    <div class="sec-card">
+      <span class="badge">Kelas</span>
+      <h3 class="k-nama" id="k-nama">-</h3>
+      <p class="muted">Guru: <b id="k-guru">-</b></p>
+
+      <div class="tugas" id="k-tugas">
+        <span class="cek" aria-hidden="true">&#10003;</span>
+        <div class="info"><b>Tugas dari guru</b><span id="k-tugas-teks"></span><small id="k-tugas-status"></small></div>
+        <a class="btn-f" id="k-tugas-go" href="game1.html">Kerjakan &#9654;</a>
+      </div>
+
+      <h4>Teman sekelas</h4>
+      <ul class="k-list" id="k-list"></ul>
+    </div>
+  </section>
+</div>
+
+<!-- PROFIL SAYA (popup) -->
+<div class="pf-overlay" id="pf" hidden>
+  <div class="pf-box" role="dialog" aria-modal="true" aria-labelledby="pf-title">
+    <button class="pf-x" id="pf-x" type="button" aria-label="Tutup">&times;</button>
+    <h3 id="pf-title">Profil saya</h3>
+    <dl class="pf-list">
+      <dt>Nama</dt><dd id="pf-nama">-</dd>
+      <dt>Username</dt><dd id="pf-user">-</dd>
+      <dt>Kode anak</dt><dd class="kode" id="pf-kode">-</dd>
+      <dt>Kelas</dt><dd id="pf-kelas">Belum bergabung</dd>
+    </dl>
+    <form id="pf-join" novalidate>
+      <label for="pf-kc">Gabung kelas</label>
+      <div class="pf-row">
+        <input id="pf-kc" maxlength="6" inputmode="numeric" autocomplete="off" placeholder="Kode kelas (6 angka)">
+        <button class="btn-f" type="submit">Gabung</button>
+      </div>
+    </form>
+    <button class="btn-o" id="pf-out" type="button" hidden>Keluar dari kelas</button>
+    <p class="pf-msg" id="pf-msg" role="status"></p>
+    <p class="pf-note">Kamu bisa login pakai username atau email. Kode anak diberikan ke orang tuamu supaya bisa melihat hasil belajarmu.</p>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="kelas-api.js"></script>
+<script src="app.js"></script>
+<script src="murid.js"></script>
+</body>
+</html>

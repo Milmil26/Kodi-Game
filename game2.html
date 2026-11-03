@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Game 2 - Cahaya Terakhir</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="game1.css">
+<link rel="stylesheet" href="game2.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="supabase-config.js"></script>
+<script src="guard.js" data-role="student,teacher"></script>
+<script src="progres-api.js"></script>
+</head>
+<body>
+
+<!-- karakter cadangan (dipakai kalau gambar karakter Anak belum ada) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="anak" viewBox="0 0 40 48">
+    <ellipse cx="20" cy="33" rx="12" ry="13" fill="#e8932a"/>
+    <circle cx="20" cy="17" r="11" fill="#ffd9a8"/>
+    <path d="M9 17a11 11 0 0 1 22 0c-4-4-18-4-22 0z" fill="#5a3a1e"/>
+    <circle cx="16" cy="18" r="1.8" fill="#241338"/><circle cx="24" cy="18" r="1.8" fill="#241338"/>
+  </symbol>
+  <symbol id="shadow" viewBox="0 0 40 48">
+    <ellipse cx="20" cy="26" rx="14" ry="18" fill="#140a2c"/>
+    <circle cx="14" cy="22" r="2.6" fill="#fff"/><circle cx="26" cy="22" r="2.6" fill="#fff"/>
+  </symbol>
+</defs></svg>
+
+<div class="wrap g-wrap">
+
+  <!-- BAR ATAS: logo, judul level + kemajuan, profil, menu -->
+  <header class="g-top">
+    <a class="logo" href="index.html" aria-label="KoDi - Beranda">
+      <img class="logo-robot" src="image/logo2.png" alt="">
+      <img class="logo-text" src="image/logo1.png" alt="KoDi">
+    </a>
+    <div class="g-head">
+      <b id="g-title">Level 1 : Pertarungan Pertama</b>
+      <div class="g-prog" id="g-prog" aria-label="Kemajuan level"></div>
+    </div>
+    <div class="g-tools">
+      <div class="g-dd">
+        <button class="g-circle g-avatar" id="g-prof-btn" type="button" aria-label="Profil" aria-haspopup="true" aria-expanded="false"></button>
+        <div class="g-menu" id="g-prof" hidden>
+          <div class="g-who"><b id="g-name"></b><small id="g-role">Murid</small></div>
+          <a href="murid.html#profil" id="g-prof-link">Profil saya</a>
+          <a href="#" data-logout>Keluar</a>
+        </div>
+      </div>
+      <div class="g-dd">
+        <button class="g-circle" id="g-menu-btn" type="button" aria-label="Menu" aria-haspopup="true" aria-expanded="false">&#9776;</button>
+        <div class="g-menu" id="g-menu" hidden>
+          <a href="murid.html" id="g-home">Beranda</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- TAMPILAN GAME + tombol Jalankan -->
+  <section class="g-stage-row">
+    <div class="g-stage">
+      <div class="g-board" id="g-board"></div>
+      <div class="g-result" id="g-result" hidden>
+        <b id="g-res-t"></b>
+        <span class="g-stars" id="g-stars">&#9733; &#9733; &#9733;</span>
+        <p id="g-res-p"></p>
+        <div class="g-row">
+          <button class="btn-o" id="g-again" type="button">Coba lagi</button>
+          <button class="btn-f" id="g-next" type="button">Level berikutnya</button>
+        </div>
+      </div>
+    </div>
+    <button class="g-run" id="g-run" type="button">&#9654; Jalankan</button>
+  </section>
+
+  <!-- INSTRUKSI -->
+  <div class="g-ins">
+    <b>Instruksi:</b>
+    <span class="g-bubble" id="g-ins"></span>
+    <span class="g-hint" id="g-hint" hidden></span>
+    <button class="g-talk" id="g-talk" type="button">&#128172; Putar dialog</button>
+  </div>
+
+  <!-- BLOK | AREA KERJA | KODE -->
+  <section class="g-work">
+    <div class="g-pane">
+      <div class="g-hd">Blok</div>
+      <div class="g-body g-pal" id="g-pal"></div>
+    </div>
+
+    <div class="g-pane">
+      <div class="g-hd">Area kerja</div>
+      <div class="g-body" id="g-ws">
+        <div class="blk hat">Ketika dijalankan</div>
+        <div class="g-list" id="g-list"></div>
+      </div>
+    </div>
+
+    <div class="g-pane">
+      <div class="g-hd">Kode <button type="button" id="g-restart">&#8634; Mulai ulang</button></div>
+      <pre class="g-code"><code id="g-code"></code></pre>
+    </div>
+  </section>
+
+</div>
+
+<!-- DIALOG sebelum / sesudah level -->
+<div class="dlg" id="dlg" hidden>
+  <div class="dlg-card" id="dlg-card">
+    <div class="dlg-face" id="dlg-face"></div>
+    <div class="dlg-name" id="dlg-name"></div>
+    <p class="dlg-text" id="dlg-text"></p>
+    <div class="dlg-ctl"><button type="button" id="dlg-skip">Lewati</button><span>ketuk untuk lanjut &#9662;</span></div>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="game2.js"></script>
+</body>
+</html>
