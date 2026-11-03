@@ -208,7 +208,7 @@ if (typeof module !== 'undefined') module.exports = { parseLevel, simulate, DX, 
   var SUARAS=[
     { levels:[[1,25]], folder:'audio/',
       awal:'awal-game2.mp3',
-      tujuan:null,
+      tujuan:'tujuan.mp3',
       berhasil:'berhasil-game2.mp3',
       volume:0.6 },
     { levels:[[23,25]], folder:'audio/', 
